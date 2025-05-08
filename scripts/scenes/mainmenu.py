@@ -3,7 +3,6 @@ from scenes.basescenes import BaseScene
 from scenes.explorescenes import ExplorationScene
 from scenes.options import OptionsScene
 
-import pygame
 
 class MainMenuScene(BaseScene):
     def __init__(self, game):

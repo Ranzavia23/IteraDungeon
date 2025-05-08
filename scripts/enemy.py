@@ -1,5 +1,6 @@
 import pygame
 
+
 class Enemy:
     def __init__(self, x, y, size=40):
         self.x = x
@@ -8,7 +9,6 @@ class Enemy:
         self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
         self.hp = 100
 
-    
     def update(self):
         pass
 

@@ -1,9 +1,7 @@
 import pygame
 from scene_manager import SceneManager
-
-import pygame
-from scene_manager import SceneManager
 from player import Player
+
 
 class Game:
     def __init__(self):

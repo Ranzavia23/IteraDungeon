@@ -11,6 +11,7 @@ class Skill:
     def unlock(self):
         self.unlocked = True
 
+
 class SkillTree:
     def __init__(self):
         self.skills = [

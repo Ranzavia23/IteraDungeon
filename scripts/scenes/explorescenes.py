@@ -3,6 +3,7 @@ from scenes.basescenes import BaseScene
 from attack import Attack
 from enemy import Enemy
 
+
 class ExplorationScene(BaseScene):
     def __init__(self, game):
         super().__init__(game)
@@ -18,6 +19,7 @@ class ExplorationScene(BaseScene):
 
     def return_to_menu(self):
         from scenes.mainmenu import MainMenuScene
+
         self.game.scene_manager.go_to(MainMenuScene(self.game))
 
     def handle_events(self):
@@ -28,9 +30,13 @@ class ExplorationScene(BaseScene):
             elif event.type == pygame.KEYDOWN:
                 if self.menu_active:
                     if event.key == pygame.K_UP:
-                        self.menu_selected = (self.menu_selected - 1) % len(self.menu_options)
+                        self.menu_selected = (self.menu_selected - 1) % len(
+                            self.menu_options
+                        )
                     elif event.key == pygame.K_DOWN:
-                        self.menu_selected = (self.menu_selected + 1) % len(self.menu_options)
+                        self.menu_selected = (self.menu_selected + 1) % len(
+                            self.menu_options
+                        )
                     elif event.key == pygame.K_RETURN:
                         self.select_menu_option()
                     elif event.key == pygame.K_ESCAPE:
@@ -42,8 +48,9 @@ class ExplorationScene(BaseScene):
 
                     elif event.key == pygame.K_z:
                         from scenes.skilltree import SkillTreeScene
+
                         self.game.scene_manager.push(SkillTreeScene(self.game))
-                    
+
                     elif event.key == pygame.K_x:
                         self.sword.start()
 
@@ -90,13 +97,14 @@ class ExplorationScene(BaseScene):
                 color = (255, 255, 0) if idx == self.menu_selected else (255, 255, 255)
                 text = self.font.render(item, True, color)
                 self.game.screen.blit(text, (270, 170 + idx * 40))
-        
+
         self.enemy.draw(self.game.screen)
 
     def handle_menu_selection(self):
         selected = self.menu_options[self.menu_selected]
         if selected == "Profile":
             from scenes.profilescene import ProfileScene
+
             self.game.scene_manager.go_to(ProfileScene(self.game))
         elif selected == "Skill Tree":
             print("Open Skill Tree (Belum dibuat)")
@@ -104,6 +112,7 @@ class ExplorationScene(BaseScene):
             print("Open Options (Belum dibuat)")
         elif selected == "Main Menu":
             from scenes.mainmenu import MainMenuScene
+
             self.game.scene_manager.go_to(MainMenuScene(self.game))
         elif selected == "Exit Game":
             self.game.running = False
@@ -115,16 +124,20 @@ class ExplorationScene(BaseScene):
             color = (255, 255, 0) if idx == self.menu_selected else (255, 255, 255)
             text = self.font.render(option, True, color)
             menu_surface.blit(text, (20, 20 + idx * 40))
-        self.game.screen.blit(menu_surface, (self.game.screen.get_width() // 2 - 150, 100))
+        self.game.screen.blit(
+            menu_surface, (self.game.screen.get_width() // 2 - 150, 100)
+        )
 
     def select_menu_option(self):
         option = self.menu_options[self.menu_selected]
         print(f"Selected: {option}")
         if option == "Profile":
             from scenes.profilescene import ProfileScene
+
             self.game.scene_manager.push(ProfileScene(self.game))
         elif option == "Skill Tree":
             from scenes.skilltree import SkillTreeScene
+
             self.game.scene_manager.go_to(SkillTreeScene(self.game))
         elif option == "Options":
             print("Buka options (belum dibuat)")
@@ -134,7 +147,8 @@ class ExplorationScene(BaseScene):
     def check_collision(self, player_pos, enemy_rect):
         player_rect = pygame.Rect(player_pos[0], player_pos[1], 40, 40)
         return player_rect.colliderect(enemy_rect)
-    
+
     def start_battle(self, enemy, player_first):
         from scenes.battlescene import BattleScene
+
         self.game.scene_manager.go_to(BattleScene(self.game, enemy, player_first))

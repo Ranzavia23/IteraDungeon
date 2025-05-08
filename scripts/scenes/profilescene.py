@@ -1,6 +1,7 @@
 import pygame
 from scenes.basescenes import BaseScene
 
+
 class ProfileScene(BaseScene):
     def __init__(self, game):
         super().__init__(game)
@@ -28,7 +29,7 @@ class ProfileScene(BaseScene):
             f"DEF: {player.defense}",
             f"Speed: {player.speed}",
             "",
-            "Press ESC to return."
+            "Press ESC to return.",
         ]
         y = 50
         for line in lines:

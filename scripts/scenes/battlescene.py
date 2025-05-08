@@ -1,5 +1,7 @@
 import pygame
 from scenes.basescenes import BaseScene
+
+
 class BattleScene(BaseScene):
     def __init__(self, game, enemy, player_first=True):
         super().__init__(game)
@@ -28,6 +30,7 @@ class BattleScene(BaseScene):
         if self.enemy.hp <= 0:
             print("Menang!")
             from scenes.explorescenes import ExplorationScene
+
             self.game.scene_manager.go_to(ExplorationScene(self.game))
         elif self.game.player.hp <= 0:
             print("Kalah! Game over.")
@@ -35,8 +38,12 @@ class BattleScene(BaseScene):
 
     def render(self):
         self.game.screen.fill((0, 0, 0))
-        enemy_text = self.font.render(f"Enemy HP: {self.enemy.hp}", True, (255, 255, 255))
-        player_text = self.font.render(f"Player HP: {self.game.player.hp}", True, (255, 255, 255))
+        enemy_text = self.font.render(
+            f"Enemy HP: {self.enemy.hp}", True, (255, 255, 255)
+        )
+        player_text = self.font.render(
+            f"Player HP: {self.game.player.hp}", True, (255, 255, 255)
+        )
         turn_text = self.font.render(f"Turn: {self.turn}", True, (255, 255, 0))
 
         self.game.screen.blit(enemy_text, (50, 50))

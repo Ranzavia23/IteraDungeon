@@ -1,6 +1,7 @@
 import pygame
 from skill import SkillTree
 
+
 class Player:
     def __init__(self):
         self.name = "Player"
@@ -31,8 +32,14 @@ class Player:
         if self.facing == "right":
             return pygame.Rect(self.rect.right, self.rect.top, offset, self.rect.height)
         elif self.facing == "left":
-            return pygame.Rect(self.rect.left - offset, self.rect.top, offset, self.rect.height)
+            return pygame.Rect(
+                self.rect.left - offset, self.rect.top, offset, self.rect.height
+            )
         elif self.facing == "up":
-            return pygame.Rect(self.rect.left, self.rect.top - offset, self.rect.width, offset)
+            return pygame.Rect(
+                self.rect.left, self.rect.top - offset, self.rect.width, offset
+            )
         elif self.facing == "down":
-            return pygame.Rect(self.rect.left, self.rect.bottom, self.rect.width, offset)
+            return pygame.Rect(
+                self.rect.left, self.rect.bottom, self.rect.width, offset
+            )

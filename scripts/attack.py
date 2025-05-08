@@ -1,5 +1,6 @@
 import pygame
 
+
 class Attack:
     def __init__(self, player, range=40, duration=300):
         self.player = player

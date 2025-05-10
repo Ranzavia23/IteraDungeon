@@ -1,13 +1,15 @@
 import pygame
-from scenes.basescenes import BaseScene
-from scenes.explorescenes import ExplorationScene
-from scenes.options import OptionsScene
+from scenes.base_scene import BaseScene
+from scenes.explore_scene import ExplorationScene
+from scenes.options_scene import OptionsScene
+
+from utils.font_helper import FontHelper
 
 
 class MainMenuScene(BaseScene):
     def __init__(self, game):
         super().__init__(game)
-        self.font = pygame.font.SysFont(None, 48)
+        self.font = FontHelper.getFont("Minecraft", 48)
         self.options = ["Start", "Rename", "Exit"]
         self.selected = 0
 
@@ -34,7 +36,12 @@ class MainMenuScene(BaseScene):
 
     def render(self):
         self.game.screen.fill((30, 30, 30))
+        screen_width = self.game.screen.get_width()
+        screen_height = self.game.screen.get_height()
         for i, option in enumerate(self.options):
             color = (255, 255, 0) if i == self.selected else (255, 255, 255)
             text = self.font.render(option, True, color)
-            self.game.screen.blit(text, (100, 100 + i * 60))
+            text_rect = text.get_rect(
+                center=(screen_width // 2, screen_height // 2 + i * 60)
+            )
+            self.game.screen.blit(text, text_rect)

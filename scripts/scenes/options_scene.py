@@ -1,5 +1,5 @@
 import pygame
-from scenes.basescenes import BaseScene
+from scenes.base_scene import BaseScene
 
 
 class OptionsScene(BaseScene):
@@ -15,13 +15,13 @@ class OptionsScene(BaseScene):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     self.game.player.name = self.input_text.strip()
-                    from scenes.mainmenu import MainMenuScene
+                    from scenes.mainmenu_scene import MainMenuScene
 
                     self.game.scene_manager.go_to(MainMenuScene(self.game))
                 elif event.key == pygame.K_BACKSPACE:
                     self.input_text = self.input_text[:-1]
                 elif event.key == pygame.K_ESCAPE:
-                    from scenes.mainmenu import MainMenuScene
+                    from scenes.mainmenu_scene import MainMenuScene
 
                     self.game.scene_manager.go_to(MainMenuScene(self.game))
                 else:

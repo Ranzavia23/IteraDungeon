@@ -1,5 +1,5 @@
 import pygame
-from scenes.basescenes import BaseScene
+from scenes.base_scene import BaseScene
 
 
 class ProfileScene(BaseScene):

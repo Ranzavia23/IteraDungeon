@@ -1,5 +1,5 @@
 import pygame
-from scenes.basescenes import BaseScene
+from scenes.base_scene import BaseScene
 from attack import Attack
 from floors import FirstFloor, SecondFloor, ThirdFloor
 
@@ -20,7 +20,7 @@ class ExplorationScene(BaseScene):
         self.current_floor = self.floors[self.current_floor_index]
 
     def return_to_menu(self):
-        from scenes.mainmenu import MainMenuScene
+        from scenes.mainmenu_scene import MainMenuScene
 
         self.game.scene_manager.go_to(MainMenuScene(self.game))
 
@@ -46,7 +46,7 @@ class ExplorationScene(BaseScene):
                     if event.key == pygame.K_ESCAPE:
                         self.menu_active = True
                     elif event.key == pygame.K_z:
-                        from scenes.skilltree import SkillTreeScene
+                        from scenes.skilltree_scene import SkillTreeScene
 
                         self.game.scene_manager.push(SkillTreeScene(self.game))
                     elif event.key == pygame.K_x:
@@ -111,7 +111,7 @@ class ExplorationScene(BaseScene):
     def handle_menu_selection(self):
         selected = self.menu_options[self.menu_selected]
         if selected == "Profile":
-            from scenes.profilescene import ProfileScene
+            from scenes.profile_scene import ProfileScene
 
             self.game.scene_manager.go_to(ProfileScene(self.game))
         elif selected == "Skill Tree":
@@ -119,7 +119,7 @@ class ExplorationScene(BaseScene):
         elif selected == "Options":
             print("Open Options (Belum dibuat)")
         elif selected == "Main Menu":
-            from scenes.mainmenu import MainMenuScene
+            from scenes.mainmenu_scene import MainMenuScene
 
             self.game.scene_manager.go_to(MainMenuScene(self.game))
         elif selected == "Exit Game":
@@ -140,11 +140,11 @@ class ExplorationScene(BaseScene):
         option = self.menu_options[self.menu_selected]
         print(f"Selected: {option}")
         if option == "Profile":
-            from scenes.profilescene import ProfileScene
+            from scenes.profile_scene import ProfileScene
 
             self.game.scene_manager.push(ProfileScene(self.game))
         elif option == "Skill Tree":
-            from scenes.skilltree import SkillTreeScene
+            from scenes.skilltree_scene import SkillTreeScene
 
             self.game.scene_manager.go_to(SkillTreeScene(self.game))
         elif option == "Options":
@@ -153,7 +153,7 @@ class ExplorationScene(BaseScene):
             self.return_to_menu()
 
     def start_battle(self, enemy, player_first):
-        from scenes.battlescene import BattleScene
+        from scenes.battle_scene import BattleScene
 
         self.current_floor.save_battle_position(self.current_floor.player_pos)
         self.current_floor.in_battle = True

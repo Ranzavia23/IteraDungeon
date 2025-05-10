@@ -1,5 +1,5 @@
 import pygame
-from scenes.basescenes import BaseScene
+from scenes.base_scene import BaseScene
 
 
 class SkillTreeScene(BaseScene):
@@ -13,7 +13,7 @@ class SkillTreeScene(BaseScene):
                 self.game.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    from scenes.explorescenes import ExplorationScene
+                    from scenes.explore_scene import ExplorationScene
 
                     self.game.scene_manager.go_to(ExplorationScene(self.game))
                 elif event.key == pygame.K_1:

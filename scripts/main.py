@@ -1,7 +1,7 @@
 import pygame
 
 from game import Game
-from scenes.mainmenu import MainMenuScene
+from scenes.mainmenu_scene import MainMenuScene
 
 
 def main():

@@ -1,5 +1,5 @@
 import pygame
-from scenes.basescenes import BaseScene
+from scenes.base_scene import BaseScene
 
 
 class BattleScene(BaseScene):
@@ -48,7 +48,7 @@ class BattleScene(BaseScene):
                 self.exploration_scene.on_battle_complete(enemy_defeated=True)
                 self.game.scene_manager.go_to(self.exploration_scene)
             else:
-                from scenes.explorescenes import ExplorationScene
+                from scenes.explore_scene import ExplorationScene
 
                 self.game.scene_manager.go_to(ExplorationScene(self.game))
 

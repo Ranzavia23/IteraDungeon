@@ -12,13 +12,13 @@ class Player:
         self.speed = 8
         self.skill_tree = SkillTree()
         self.rect = pygame.Rect(100, 100, 32, 32)
-        self.facing = "right"  # or "left", "up", "down"
+        self.facing = "right"
         self.attack_active = False
         self.attack_timer = 0
 
     def attack(self):
         self.attack_active = True
-        self.attack_timer = 10  # Frames attack is active
+        self.attack_timer = 10
 
     def update(self):
         if self.attack_active:

@@ -8,6 +8,7 @@ class Enemy:
         self.size = size
         self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
         self.hp = 100
+        self.damage = 5
 
     def update(self):
         pass

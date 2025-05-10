@@ -1,6 +1,6 @@
 import pygame
 from scenes.base_scene import BaseScene
-from scenes.explore_scene import ExplorationScene
+from scenes.exploration_scene import ExplorationScene
 from scenes.options_scene import OptionsScene
 
 from utils.font_helper import FontHelper
@@ -30,7 +30,7 @@ class MainMenuScene(BaseScene):
         if selected_option == "Start":
             self.game.scene_manager.go_to(ExplorationScene(self.game))
         elif selected_option == "Rename":
-            self.game.scene_manager.go_to(OptionsScene(self.game))  # Pergi ke opsi
+            self.game.scene_manager.go_to(OptionsScene(self.game))
         elif selected_option == "Exit":
             self.game.running = False
 

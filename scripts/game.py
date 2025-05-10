@@ -1,5 +1,6 @@
 import pygame
 from scene_manager import SceneManager
+
 from player import Player
 from config import SCREEN_WIDTH, SCREEN_HEIGHT, FPS
 

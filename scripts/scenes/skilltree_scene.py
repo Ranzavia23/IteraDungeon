@@ -13,7 +13,7 @@ class SkillTreeScene(BaseScene):
                 self.game.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    from scenes.explore_scene import ExplorationScene
+                    from scenes.exploration_scene import ExplorationScene
 
                     self.game.scene_manager.go_to(ExplorationScene(self.game))
                 elif event.key == pygame.K_1:

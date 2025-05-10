@@ -26,7 +26,7 @@ class BattleScene(BaseScene):
                         print("Player menyerang! HP musuh:", self.enemy.hp)
                         self.turn = "enemy"
                 elif self.turn == "enemy":
-                    self.game.player.hp -= 5
+                    self.game.player.hp -= self.enemy.damage
                     print("Musuh menyerang! HP player:", self.game.player.hp)
                     self.turn = "player"
 
@@ -48,7 +48,7 @@ class BattleScene(BaseScene):
                 self.exploration_scene.on_battle_complete(enemy_defeated=True)
                 self.game.scene_manager.go_to(self.exploration_scene)
             else:
-                from scenes.explore_scene import ExplorationScene
+                from scenes.exploration_scene import ExplorationScene
 
                 self.game.scene_manager.go_to(ExplorationScene(self.game))
 

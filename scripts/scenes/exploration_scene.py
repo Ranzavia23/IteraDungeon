@@ -51,7 +51,7 @@ class ExplorationScene(BaseScene):
                         self.game.scene_manager.push(SkillTreeScene(self.game))
                     elif event.key == pygame.K_x:
                         self.sword.start()
-                        self.start_battle(self.current_floor.enemy, player_first=True)
+                       
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -72,8 +72,10 @@ class ExplorationScene(BaseScene):
                 else:
                     print("Congratulations! You've completed all floors!")
 
-            if self.sword.active:
-                self.sword.update()
+            if (self.sword.active and self.current_floor.enemy not in self.current_floor.defeated_enemies):
+                hitbox = self.sword.get_hitbox()
+                if hitbox and hitbox.colliderect(self.current_floor.enemy.rect):
+                    self.start_battle(self.current_floor.enemy, player_first=True)
 
     def render(self):
         self.game.screen.fill((20, 20, 20))

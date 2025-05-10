@@ -117,7 +117,8 @@ class ExplorationScene(BaseScene):
 
             self.game.scene_manager.go_to(ProfileScene(self.game))
         elif selected == "Skill Tree":
-            print("Open Skill Tree (Belum dibuat)")
+            from scenes.skilltree_scene import SkillTreeScene
+            self.game.scene_manager.push(SkillTreeScene(self.game))
         elif selected == "Options":
             print("Open Options (Belum dibuat)")
         elif selected == "Main Menu":
@@ -145,12 +146,14 @@ class ExplorationScene(BaseScene):
             from scenes.profile_scene import ProfileScene
 
             self.game.scene_manager.push(ProfileScene(self.game))
+        
         elif option == "Skill Tree":
             from scenes.skilltree_scene import SkillTreeScene
+            self.game.scene_manager.push(SkillTreeScene(self.game))
 
-            self.game.scene_manager.go_to(SkillTreeScene(self.game))
         elif option == "Options":
             print("Buka options (belum dibuat)")
+
         elif option == "Exit to Main Menu":
             self.return_to_menu()
 

@@ -1,11 +1,13 @@
 import pygame
 from scenes.base_scene import BaseScene
+from scene_manager import SceneManager
 
 
 class SkillTreeScene(BaseScene):
     def __init__(self, game):
         super().__init__(game)
         self.font = pygame.font.SysFont(None, 30)
+        self.done = False
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -13,15 +15,17 @@ class SkillTreeScene(BaseScene):
                 self.game.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    from scenes.exploration_scene import ExplorationScene
-
-                    self.game.scene_manager.go_to(ExplorationScene(self.game))
+                    self.done = True
                 elif event.key == pygame.K_1:
                     self.game.player.unlock_skill("Power Strike")
                 elif event.key == pygame.K_2:
                     self.game.player.unlock_skill("Swift Step")
                 elif event.key == pygame.K_3:
                     self.game.player.unlock_skill("Iron Guard")
+
+    def update(self):
+        if self.done:
+            self.game.scene_manager.pop()
 
     def render(self):
         self.game.screen.fill((20, 20, 20))
